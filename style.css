@@ -1,0 +1,467 @@
+@import url();
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/*ceci sera appliqueé au body (tout le corps de notre appli */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*pour center les elements */
+    min-height: 100vh;
+    /*pour laisser une hauteur */
+    background: #f7f7f7;
+}
+
+
+/*appliquer au conteneur qui contient le form */
+
+.wrapper {
+    background: #fff;
+    width: 450px;
+    border-radius: 16px;
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1), 0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+
+
+/*designe du formulaire de creation de compte qui se trouve dans la premiere section */
+
+.form {
+    padding: 25px 30px;
+}
+
+
+/*le header qui est dans la section */
+
+.form header {
+    font-size: 25px;
+    font-weight: 600;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+
+/*le form du formulaire qui est dans la section*/
+
+.form form {
+    margin: 20px 0px;
+}
+
+
+/*message d'erreur creation de compte */
+
+.form form .error-txt {
+    color: #721c24;
+    background: #f8d7da;
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #f5c6cb;
+    display: none;
+}
+
+
+/*pour les elements groupes on appele name-dateail qui se trouve dans le forumualire */
+
+.form form .name-details {
+    display: flex;
+}
+
+form .name-details .field:first-child {
+    margin-right: 10px;
+}
+
+form .name-details .field:last-child {
+    margin-left: 10px;
+}
+
+
+/* a cause de l'oeil, on va ajouter la div parent en relative pour que lo'eil soit en absoulte */
+
+.form form .field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.form form .field label {
+    margin-bottom: 2px;
+}
+
+
+/*enlever le surligner des champs du formulaire */
+
+.form form .field input {
+    outline: none;
+    *outline-color: #5873ee;
+}
+
+.form form .input input {
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+/*attaquer les deux derniers input du formulaire */
+
+.form form .image input {
+    font-size: 17px;
+}
+
+.form form .button input {
+    margin-top: 13px;
+    height: 45px;
+    border: none;
+    font-size: 17px;
+    font-weight: 400;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form .link {
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 17px;
+}
+
+.form .link a {
+    color: #333;
+}
+
+.form .link a:hover {
+    text-decoration: none;
+    *text-decoration: underline;
+}
+
+
+/*afficher l'oeil pour voir le mot de passe saisi pour la partie login*/
+
+.form form .field i {
+    position: absolute;
+    right: 15px;
+    color: #ccc;
+    top: 60%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+
+/*code unicode de l'oeil fermé est:  \f070 
+cela est gerer cté js, puverture et fermeture de l'oeil*/
+
+.form form .field i.active::before {
+    color: #333;
+    content: "\f070";
+}
+
+
+/*partiede conversations utilisateurs */
+
+.users {
+    padding: 25px 30px;
+}
+
+.users header,
+.users-list a {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    justify-content: space-between;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.wrapper img {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+:is(.users,
+.users-list) .content {
+    display: flex;
+    align-items: center;
+}
+
+.content .details {
+    margin-top: 10px;
+}
+
+.users header .content img {
+    height: 50px;
+    width: 50px;
+}
+
+:is(.users,
+.users-list) .details {
+    color: #000;
+    margin-left: 15px;
+}
+
+:is(.users,
+.users-list) .details span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.users header .logout {
+    color: #fff;
+    font-size: 17px;
+    padding: 7px 15px;
+    background: #333;
+    border-radius: 5px;
+}
+
+
+/*rechercher un utilisateur */
+
+.users .search {
+    margin: 20px 0px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.users .search .text {
+    font-size: 18px;
+}
+
+
+/*barre de recherche */
+
+.users .search input {
+    position: absolute;
+    height: 42px;
+    width: calc(100% - 50px);
+    border: 1px solid #ccc;
+    padding: 0 13px;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.users .search input.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.users .search button {
+    width: 47px;
+    height: 42px;
+    border: none;
+    outline: none;
+    color: #333;
+    background: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.2s ease;
+}
+
+.users .search button.active {
+    color: #fff;
+    background: #333;
+}
+
+.users .search button.active i::before {
+    content: "\f00d";
+}
+
+
+/*conversations*/
+
+.users-list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.users-list::-webkit-scrollbar {
+    width: 0px;
+}
+
+.users-list a {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+    border-bottom-color: #f1f1f1;
+}
+
+.users-list a:hover {
+    text-decoration: none;
+}
+
+.users-list a:last-child {
+    border: none;
+    margin-bottom: 0px;
+}
+
+.users-list a .content img {
+    width: 40px;
+    height: 40px;
+}
+
+.users-list a .content p {
+    color: #67676a;
+}
+
+
+/*pour le point pour montrer que le user est connecté*/
+
+.users-list a .status-dot {
+    font-size: 12px;
+    color: #468669;
+}
+
+
+/*nous allons utiliser cette
+ classe en php pour montrer que le user est deconnecté */
+
+.users-list a .status-dot .deconnecter {
+    color: #ccc;
+}
+
+
+/*partie reservée au chat */
+
+.chat-area header {
+    display: flex;
+    align-items: center;
+    padding: 18px 30px;
+}
+
+.chat-area header .back-icon {
+    font-size: 18px;
+    color: #333;
+}
+
+.chat-area header img {
+    height: 45px;
+    width: 45px;
+    margin: 0px 15px;
+}
+
+.chat-area header span {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.chat-area .details {
+    margin-top: 10px;
+}
+
+
+/*contenu des messages du chat */
+
+.chat-box {
+    height: 500px;
+    overflow-y: auto;
+    background: #f7f7f7;
+    padding: 10px 30px 20px 30px;
+    box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%), inset 0 -32px 32px -32px rgb(0 0 0 / 5%);
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+/*tous messages du chat */
+
+.chat-box .chat {
+    margin: 15px 0px;
+}
+
+.chat-box .chat p {
+    word-wrap: break-word;
+    padding: 8px 16px;
+    box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 8%), inset 0 16px 16px -16px rgb(0 0 0 / 10%);
+}
+
+
+/*message sortant */
+
+.chat-box .msg_sortant {
+    display: flex;
+}
+
+.msg_sortant .details {
+    margin-left: auto;
+    max-width: calc(100% - 130px);
+}
+
+.msg_sortant .details p {
+    background: #333;
+    color: #fff;
+    border-radius: 18px 18px 0 18px;
+}
+
+
+/*message entrant */
+
+.chat-box .msg_entrant {
+    display: flex;
+    align-items: flex-end;
+}
+
+.chat-box .msg_entrant img {
+    height: 35px;
+    width: 35px;
+}
+
+.msg_entrant .details {
+    margin-left: 10px;
+    margin-right: auto;
+    max-width: calc(100% - 130px);
+}
+
+.msg_entrant .details p {
+    background: #fff;
+    border-radius: 18px 18px 18px 0px;
+    color: #333;
+}
+
+
+/* Envoyer un message */
+
+.chat-area .typing-area {
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.typing-area input {
+    height: 45px;
+    width: calc(100% - 50px);
+    font-size: 17px;
+    border: 1px solid #ccc;
+    padding: 0px 13px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.typing-area button {
+    width: 55px;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    background: #333;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 19px;
+}
